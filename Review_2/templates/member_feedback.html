@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Feedback</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    form button {
+      background-color: #2B658A;
+      color: white;
+      border: 0px solid white;
+      padding: 0.75rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0px 1px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Submit Your Feedback</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('member_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="feedback-form">
+      <h2>Your Feedback</h2>
+      <center><form action="{{ url_for('member_feedback') }}" method="POST">
+        <label for="message">Feedback:</label>
+        <center><textarea id="message" name="message" rows="10" cols="40" required></textarea></center>
+        <button type="submit">Submit Feedback</button>
+      </form></center>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

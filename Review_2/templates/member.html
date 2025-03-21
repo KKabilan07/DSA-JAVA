@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Member Details</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('view_members') }}">Back to Member List</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="member-details">
+            <h2>{{ member.name }}</h2>
+            <p><strong>Age:</strong> {{ member.age }}</p>
+            <p><strong>Email:</strong> {{ member.email }}</p>
+            <p><strong>Membership Type:</strong> {{ member.membership_type }}</p>
+            <p><strong>Contact:</strong> {{ member.contact }}</p>
+            <p><strong>Join Date:</strong> {{ member.join_date }}</p>
+        </section>
+        <section class="actions">
+            <a href="{{ url_for('update_member', member_id=member._id) }}" class="btn">Update Member</a>
+            <form action="{{ url_for('delete_member') }}" method="POST" style="display:inline;"> 
+                <input type="hidden" name="member_id" value="{{ member._id }}">
+                <button type="submit" class="delete-btn">Delete Member</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Fitness Management System</p>
+    </footer>
+</body>
+</html>

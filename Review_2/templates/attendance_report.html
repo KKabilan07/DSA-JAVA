@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Attendance Report</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="attendance-report">
+            <h2>Member Attendance</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Member ID</th>
+                        <th>Name</th>
+                        <th>Check-in Time</th>
+                        <th>Check-out Time</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance %}
+                    <tr>
+                        <td>{{ record.member_id }}</td>
+                        <td>{{ record.name }}</td>
+                        <td>{{ record.check_in }}</td>
+                        <td>{{ record.check_out }}</td>
+                        <td>{{ record.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

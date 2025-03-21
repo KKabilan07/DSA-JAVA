@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Equipment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Add New Equipment</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('view_equipment') }}">View Equipment</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <form action="{{ url_for('add_equipment') }}" method="POST">
+      <label for="name">Equipment Name:</label>
+      <input type="text" id="name" name="name" required><br>
+      
+      <label for="type">Equipment Type:</label>
+      <input type="text" id="type" name="type" required><br>
+      
+      <label for="available">Available (true/false):</label>
+      <input type="text" id="available" name="available" value="true" required><br>
+      
+      <label for="maintenance_date">Next Maintenance Date:</label>
+      <input type="date" id="maintenance_date" name="maintenance_date" required><br>
+      
+      <button type="submit">Add Equipment</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

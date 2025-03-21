@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Payment History</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Payment History</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('member_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="payment-history">
+      <h2>Your Payment Records</h2>
+      {% if payments %}
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments %}
+          <tr>
+            <td>{{ payment.date }}</td>
+            <td>${{ payment.amount }}</td>
+            <td>{{ payment.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No payment records found.</p>
+      {% endif %}
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

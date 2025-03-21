@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Equipments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Equipment List</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('view_equipment') }}">Equipments</a></li>
+                <li><a href="{{ url_for('attendance_report') }}">Attendance</a></li>
+                <li><a href="{{ url_for('payment_history') }}">Payments</a></li>
+                <li><a href="{{ url_for('view_feedback') }}">Feedback</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="equipment-list">
+            <h2>Available Equipments</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Equipment Name</th>
+                        <th>Type</th>
+                        <th>Availability</th>
+                        <th>Next Maintenance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for equipment in equipments %}
+                    <tr>
+                        <td>{{ equipment.name }}</td>
+                        <td>{{ equipment.type }}</td>
+                        <td>{{ 'Available' if equipment.available else 'In Use' }}</td>
+                        <td>{{ equipment.maintenance_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

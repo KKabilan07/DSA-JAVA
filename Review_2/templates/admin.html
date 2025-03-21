@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_member') }}">Add Member</a></li>
+                <li><a href="{{ url_for('view_members') }}">View Members</a></li>
+                <li><a href="{{ url_for('add_attendance') }}">Add Attendance</a></li>
+                <li><a href="{{ url_for('add_fitness_plan') }}">Add Fitness Plan</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="admin-dashboard">
+            <h2>Quick Access</h2>
+            <div class="dashboard-actions">
+                <a href="{{ url_for('view_members') }}" class="btn">View Members</a>
+                <a href="{{ url_for('add_member') }}" class="btn">Add Member</a>
+                <a href="{{ url_for('add_attendance') }}" class="btn">Add Attendance</a>
+                <a href="{{ url_for('add_fitness_plan') }}" class="btn">Add Fitness Plan</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

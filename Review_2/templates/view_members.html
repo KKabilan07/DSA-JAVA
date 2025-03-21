@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Members</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Member Management</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="member-list">
+            <h2>All Members</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Membership Type</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for member in members %}
+                    <tr>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.age }}</td>
+                        <td>{{ member.email }}</td>
+                        <td>{{ member.membership_type }}</td>
+                        <td>{{ member.contact }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_member') }}" method="POST" style="display:inline;"> 
+                                <input type="hidden" name="member_id" value="{{ member._id }}">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <a href="{{ url_for('update_member', member_id=member._id) }}" class="btn">Update</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <section class="add-member">
+            <h2>Add New Member</h2>
+            <form action="{{ url_for('add_member') }}" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                
+                <label for="age">Age:</label>
+                <input type="number" name="age" id="age" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                
+                <label for="membership_type">Membership Type:</label>
+                <input type="text" name="membership_type" id="membership_type" required>
+                
+                <label for="contact">Contact:</label>
+                <input type="text" name="contact" id="contact" required>
+                
+                <button type="submit">Add Member</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

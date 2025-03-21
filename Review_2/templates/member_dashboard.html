@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Welcome, {{ user['username'] }}</h1>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('member_dashboard') }}">Dashboard</a></li>
+        <li><a href="{{ url_for('member_payment_history') }}">Payment History</a></li>
+        <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('member_feedback') }}">Feedback</a></li>
+        <li><a href="{{ url_for('member_feedback') }}">Submit New Feedback</a></li>
+        <li>
+          <form action="{{ url_for('member_check_in') }}" method="POST" style="display:inline;">
+            <button type="submit">Check In</button>
+          </form>
+        </li>
+        <li>
+          <form action="{{ url_for('member_check_out') }}" method="POST" style="display:inline;">
+            <button type="submit">Check Out</button>
+          </form>
+        </li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="dashboard-overview">
+      <h2>Dashboard Overview</h2>
+      <p>Below you'll find your attendance records, payment history, and feedback.</p>
+    </section>
+    
+    <section class="attendance-records">
+      <h3>Attendance Records</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in attendance %}
+          <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.check_in }}</td>
+            <td>{{ record.check_out }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    
+    <section class="payment-history">
+      <h3>Payment History</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for payment in payments %}
+          <tr>
+            <td>{{ payment.date }}</td>
+            <td>${{ payment.amount }}</td>
+            <td>{{ payment.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    
+    <section class="feedback-records">
+      <h3>Your Feedback</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for fb in feedbacks %}
+          <tr>
+            <td>{{ fb.date }}</td>
+            <td>{{ fb.message }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      
+    </section>
+    
+  </main>
+  <footer>
+    <p>&copy; 2025 Fitness Management System. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

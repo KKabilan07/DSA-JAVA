@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Member</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Update Member</h1>
+    </header>
+    <main>
+        <form action="" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ member.name }}" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" value="{{ member.age }}" required>
+            
+            <label for="membership_type">Membership Type:</label>
+            <input type="text" id="membership_type" name="membership_type" value="{{ member.membership_type }}" required>
+            
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" value="{{ member.contact }}" required>
+            
+            <button type="submit">Update</button>
+        </form>
+    </main>
+</body>
+</html>
