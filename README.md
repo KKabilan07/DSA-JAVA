@@ -99,7 +99,7 @@ Especially after the pandemic, having a system that allows **remote management**
 ```bash
 # Clone the repository
 git clone https://github.com/KKabilan07/DSA-JAVA.git
-cd FMS
+cd Final
 
 # Install dependencies
 pip install -r requirements.txt
