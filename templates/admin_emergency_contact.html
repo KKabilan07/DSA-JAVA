@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergency Contacts | FitTrack Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Emergency Contacts</h1>
+
+    <!-- Add Emergency Contact Form -->
+    <form action="{{ url_for('admin_emergency_contact') }}" method="POST">
+      <h2>Add Emergency Contact</h2>
+
+      <label for="member_email">Member Email:</label>
+      <input type="email" name="member_email" required>
+
+      <label for="contact_name">Contact Name:</label>
+      <input type="text" name="contact_name" required>
+
+      <label for="relation">Relation:</label>
+      <input type="text" name="relation" placeholder="e.g. Father, Friend" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" required>
+
+      <input type="submit" value="Add Contact">
+    </form>
+
+    <!-- View Emergency Contacts -->
+    <h2 style="margin-top: 40px;">All Emergency Contacts</h2>
+    {% if contacts %}
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Member Email</th>
+            <th>Contact Name</th>
+            <th>Relation</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+            <tr>
+              <td>{{ contact.member_email }}</td>
+              <td>{{ contact.contact_name }}</td>
+              <td>{{ contact.relation }}</td>
+              <td>{{ contact.phone }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No emergency contacts found.</p>
+    {% endif %}
+
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>
