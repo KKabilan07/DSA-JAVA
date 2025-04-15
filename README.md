@@ -98,7 +98,7 @@ Especially after the pandemic, having a system that allows **remote management**
 
 ```bash
 # Clone the repository
-git clone https://github.com/KKabilan07/DSA.git
+git clone https://github.com/KKabilan07/DSA-JAVA.git
 cd FMS
 
 # Install dependencies
