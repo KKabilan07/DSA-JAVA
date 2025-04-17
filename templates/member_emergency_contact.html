@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Emergency Contact | FitTrack Member</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>My Emergency Contact</h1>
+
+    {% if contact %}
+      <div class="card">
+        <p><strong>Name:</strong> {{ contact.contact_name }}</p>
+        <p><strong>Relation:</strong> {{ contact.relation }}</p>
+        <p><strong>Phone:</strong> {{ contact.phone }}</p>
+      </div>
+    {% else %}
+      <p>No emergency contact info found.</p>
+    {% endif %}
+
+    <h2 style="margin-top: 40px;">Add / Update Contact</h2>
+    <form method="POST" action="{{ url_for('member_emergency_contact') }}">
+      <label for="contact_name">Contact Name:</label>
+      <input type="text" name="contact_name" required>
+
+      <label for="relation">Relation:</label>
+      <input type="text" name="relation" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="phone" required>
+
+      <input type="submit" value="Save Contact">
+    </form>
+
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('member_dashboard') }}">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>
