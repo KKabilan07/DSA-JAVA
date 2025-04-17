@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Member</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            align-items: center;
+            justify-content: center;
+        }
+        p{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Search Member</h2>
+        <form method="GET" action="{{ url_for('search_member') }}">
+            <input type="text" name="query" placeholder="Enter name, email or ID" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+
+        {% if members %}
+        <h3>Results:</h3>
+        <ul>
+            {% for member in members %}
+            <li>
+                <strong>{{ member.name }}</strong> ({{ member.email }})<br>
+                Phone: {{ member.phone }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% elif query %}
+        <p>No results found for "{{ query }}"</p>
+        {% endif %}
+    </div>
+</body>
+</html>

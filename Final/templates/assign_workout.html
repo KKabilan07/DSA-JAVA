@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assign Workout | FitTrack Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Assign Workout Plan</h1>
+
+    <form action="{{ url_for('assign_workout') }}" method="POST">
+      <label for="member_email">Member Email:</label>
+      <input type="email" name="member_email" placeholder="e.g. john@example.com" required>
+
+      {% for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+        <label for="{{ day }}">{{ day }}:</label>
+        <input type="text" name="schedule[{{ day }}]" placeholder="e.g. Chest & Triceps - Bench, Pushups">
+      {% endfor %}
+
+      <label for="notes">Additional Notes:</label>
+      <textarea name="notes" rows="4" placeholder="Any custom instructions..."></textarea>
+
+      <input type="submit" value="Assign Workout">
+    </form>
+
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

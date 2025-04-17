@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assign Diet Plan | FitTrack Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    input[type="submit"]{
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Assign Diet Plan</h1>
+
+    <form action="{{ url_for('assign_diet') }}" method="POST">
+      <label for="member_email">Member Email:</label>
+      <input type="email" name="member_email" placeholder="e.g. john@example.com" required>
+
+      <label for="breakfast">🍳 Breakfast:</label>
+      <input type="text" name="meals[breakfast]" placeholder="e.g. Oats, boiled eggs, green tea">
+
+      <label for="lunch">🍛 Lunch:</label>
+      <input type="text" name="meals[lunch]" placeholder="e.g. Grilled chicken, brown rice, veggies">
+
+      <label for="dinner">🍲 Dinner:</label>
+      <input type="text" name="meals[dinner]" placeholder="e.g. Soup, salad">
+
+      <label for="snacks">🥜 Snacks:</label>
+      <input type="text" name="meals[snacks]" placeholder="e.g. Nuts, protein shake">
+
+      <label for="notes">📝 Additional Notes:</label>
+      <textarea name="notes" rows="4" placeholder="Any custom dietary instructions..."></textarea>
+
+      <input type="submit" value="Assign Diet">
+    </form>
+
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Member Feedback | FitTrack Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .container{
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+    th {
+            padding:10px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Member Feedback</h1>
+
+    {% if feedbacks %}
+    <table class="styled-table" border="1">
+      <thead>
+        <tr>
+          <th>Member Email</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fb in feedbacks %}
+        <tr>
+          <td>{{ fb.member_email }}</td>
+          <td>{{ fb.message }}</td>
+          <td>{{ fb.date_submitted.strftime('%Y-%m-%d %H:%M') if fb.date_submitted else '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p>No feedback submitted yet.</p>
+    {% endif %}
+
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+    </p>
+  </div>
+</body>
+</html>
