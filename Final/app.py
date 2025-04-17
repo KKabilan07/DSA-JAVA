@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/fitnesssdb'
+app.config['MONGO_URI'] = "mongodb://localhost:27017/fitnesssdb"
 mongo = PyMongo(app)
 from functools import wraps
 
