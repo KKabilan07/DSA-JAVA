@@ -11,7 +11,7 @@
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
-    <p style="color: green;" align="center">{{ message }}</p>
+    <p style="color: #2196F3;" align="center">{{ message }}</p>
     {% endfor %}
     {% endif %}
     {% endwith %}
@@ -40,6 +40,9 @@
 
       <button type="submit">Add Payment</button>
     </form>
+    <p style="text-align: center; margin-top: 20px;">
+      <a href="{{ url_for('admin_dashboard') }}">← Back to Dashboard</a>
+    </p>
   </div>
 </body>
 </html>

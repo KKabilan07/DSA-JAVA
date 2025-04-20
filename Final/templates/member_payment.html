@@ -22,7 +22,7 @@
 
     <!-- Submit Payment -->
     <h2 style="margin-top: 40px;">Submit New Payment</h2>
-    <form action="{{ url_for('submit_member_payment') }}" method="POST">
+    <form action="{{ url_for('member_payment') }}" method="POST">
       <label for="membership_type">Membership Type:</label>
       <select name="membership_type" required>
         <option value="Monthly">Monthly - ₹999</option>
