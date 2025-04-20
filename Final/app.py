@@ -574,7 +574,6 @@ def search_member():
 
 @app.route('/assign_workout', methods=['GET', 'POST'])
 @login_required(role='admin')
-@login_required(role='admin')
 def assign_workout():
     admin = Admin()
     return admin.assign_workout()
@@ -627,11 +626,13 @@ def handle_key_error(e):
     return redirect(url_for('member_login'))
 
 @app.route('/check-in', methods=['GET', 'POST'])
+@login_required(role='member')
 def check_in():
     member = Member(session['member_id'])
     return member.check_in()
 
 @app.route('/check-out', methods=['GET', 'POST'], endpoint='check_out')
+@login_required(role='member')
 def member_check_out():
     member = Member(session['member_id'])
     return member.check_out()
